@@ -1,0 +1,16 @@
+ios-webkit-mcp
+Copyright 2026 echopi
+
+This product is an independent open-source project licensed under the
+Apache License, Version 2.0 (see LICENSE).
+
+It is an independent implementation of an iOS WebView debugging bridge
+based on the publicly available WebKit Inspector protocol definitions
+(https://github.com/WebKit/WebKit/tree/main/Source/JavaScriptCore/inspector/protocol).
+
+Not affiliated with, endorsed by, or sponsored by Apple Inc. or any
+other organization. All product names, logos, and brands are property
+of their respective owners.
+
+"echopi" is the author's public pseudonym; correspondence is via the
+email address listed in package.json.

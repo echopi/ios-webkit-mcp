@@ -1,0 +1,77 @@
+{
+  "name": "ios-webkit-mcp",
+  "version": "0.18.3",
+  "description": "iOS WebView debugging MCP server. Bridges LLM agents (Claude Code / Cursor / etc.) to iPhone WKWebView via Apple Web Inspector Protocol (WIP) transported by ios_webkit_debug_proxy. 57 tools (54 verified E2E + 3 with documented iOS WKWebView runtime limitations).",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "webkit",
+    "wkwebview",
+    "ios",
+    "ios-debugger",
+    "webview-debugger",
+    "inspector",
+    "web-inspector-protocol",
+    "wip",
+    "ios-webkit-debug-proxy",
+    "iwdp",
+    "chrome-devtools-mcp",
+    "claude-code",
+    "cursor"
+  ],
+  "license": "Apache-2.0",
+  "author": "echopi <eagleking0213@gmail.com>",
+  "homepage": "https://github.com/echopi/ios-webkit-mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echopi/ios-webkit-mcp.git"
+  },
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "./build/src/index.js",
+  "types": "./build/src/index.d.ts",
+  "bin": {
+    "ios-webkit-mcp": "./build/src/bin/ios-webkit-mcp.js"
+  },
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('build', {recursive: true, force: true})\"",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "start": "node build/src/bin/ios-webkit-mcp.js",
+    "smoke:list-pages": "node scripts/smoke-list-pages.js",
+    "smoke:evaluate": "node scripts/smoke-evaluate.js",
+    "smoke:all-tools": "node scripts/smoke-all-tools.js",
+    "smoke:capability": "node scripts/smoke-capability-discovery.js",
+    "smoke:batch13-must": "node scripts/smoke-batch13-must.js",
+    "smoke:batch13-should": "node scripts/smoke-batch13-should.js",
+    "smoke:batch14-quickwin": "node scripts/smoke-batch14-quickwin.js",
+    "smoke:batch14-intercept": "node scripts/smoke-batch14-intercept.js",
+    "probe": "node scripts/probe-capabilities.mjs",
+    "test": "npm run build && node --test tests/*.test.js",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "@types/ws": "^8.18.1",
+    "ws": "^8.20.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.6.0"
+  },
+  "files": [
+    "build/src",
+    "README.md",
+    "docs/spec.md",
+    "LICENSE",
+    "NOTICE",
+    "CONTRIBUTING.md"
+  ]
+}
